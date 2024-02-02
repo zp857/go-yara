@@ -238,7 +238,8 @@ func ReadRules(rd io.Reader) (*Rules, error) {
 // It should not be necessary to call this method directly.
 func (r *Rules) Destroy() {
 	if r.cptr != nil {
-		C.yr_rules_destroy(r.cptr)
+		// test fix crash
+		//C.yr_rules_destroy(r.cptr)
 		r.cptr = nil
 	}
 	runtime.SetFinalizer(r, nil)
